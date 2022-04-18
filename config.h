@@ -61,6 +61,13 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 
+/* volume */
+static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+
+/* screenshot */
+static const char *screenshot[] = { "scrot", "/home/dario/pictures/screenshots/%Y-%m-%d-%T-screenshot.jpg", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -88,6 +95,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_F1,     spawn,          SHCMD("setxkbmap hr") },
 	{ MODKEY|ControlMask,           XK_F2,     spawn,          SHCMD("setxkbmap ru") },
+	{ MODKEY,                       XK_F7,     spawn,          {.v = upvol   } },
+    	{ MODKEY,                       XK_F6,     spawn,          {.v = downvol } },
+	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
