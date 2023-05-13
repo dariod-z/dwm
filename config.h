@@ -66,7 +66,7 @@ static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute
 static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 
 /* screenshot */
-static const char *screenshot[] = { "scrot", "/home/dario/pictures/screenshots/%Y-%m-%d-%T-screenshot.jpg", NULL };
+static const char *screenshot[] = { "scrot", "/home/dario/pictures/screenshots/%Y-%d-%m_%T_screenshot.jpg", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,8 +97,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_F2,     spawn,          SHCMD("setxkbmap ru") },
 	{ MODKEY,                       XK_F7,     spawn,          {.v = upvol   } },
     	{ MODKEY,                       XK_F6,     spawn,          {.v = downvol } },
-	{ 0,                            XK_Print,  spawn,          SHCMD("scrot '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
-	{ 0|ControlMask,                XK_Print,  spawn,          SHCMD("scrot -s -f '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
+	{ 0,                            XK_Print,  spawn,          SHCMD("scrot '/tmp/%Y-%d-%m_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
+	{ 0|ControlMask,                XK_Print,  spawn,          SHCMD("scrot -s -f '/tmp/%Y-%d-%m_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
 	{ 0|ShiftMask,                  XK_Print,  spawn,          {.v = screenshot } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
