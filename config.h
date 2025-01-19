@@ -65,6 +65,10 @@ static const char *termcmd[]  = { "kitty", NULL };
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 
+/* backlight */
+static const char *brightnessup[]   = { "brightnessctl", "set", "5%+", NULL };
+static const char *brightnessdown[] = { "brightnessctl", "set", "5%-", NULL };
+
 /* screenshot */
 static const char *screenshot[] = { "scrot", "/home/dario/pictures/screenshots/%Y-%d-%m_%T_screenshot.jpg", NULL };
 
@@ -96,7 +100,9 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_F1,     spawn,          SHCMD("setxkbmap hr") },
 	{ MODKEY|ControlMask,           XK_F2,     spawn,          SHCMD("setxkbmap ru") },
 	{ MODKEY,                       XK_F7,     spawn,          {.v = upvol   } },
-    	{ MODKEY,                       XK_F6,     spawn,          {.v = downvol } },
+    { MODKEY,                       XK_F6,     spawn,          {.v = downvol } },
+    { MODKEY,                       XK_F4,     spawn,          {.v = brightnessup} },
+    { MODKEY,                       XK_F3,     spawn,          {.v = brightnessdown} },
 	{ 0,                            XK_Print,  spawn,          SHCMD("scrot '/tmp/%Y-%d-%m_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
 	{ 0|ControlMask,                XK_Print,  spawn,          SHCMD("scrot -s -f '/tmp/%Y-%d-%m_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
 	{ 0|ShiftMask,                  XK_Print,  spawn,          {.v = screenshot } },
