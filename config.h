@@ -70,7 +70,7 @@ static const char *brightnessup[]   = { "brightnessctl", "set", "5%+", NULL };
 static const char *brightnessdown[] = { "brightnessctl", "set", "5%-", NULL };
 
 /* screenshot */
-static const char *screenshot[] = { "scrot", "/home/dario/pictures/screenshots/%Y-%d-%m_%T_screenshot.jpg", NULL };
+static const char *screenshot[] = { "scrot", "/home/dario/pictures/screenshots/%Y-%d-%m_%T_screenshot.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,6 +97,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+    { MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+    { MODKEY,                       XK_plus,  setgaps,        {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_plus,  setgaps,        {.i = 0  } },
 	{ MODKEY|ControlMask,           XK_F1,     spawn,          SHCMD("setxkbmap hr") },
 	{ MODKEY|ControlMask,           XK_F2,     spawn,          SHCMD("setxkbmap ru") },
 	{ MODKEY,                       XK_F7,     spawn,          {.v = upvol   } },
